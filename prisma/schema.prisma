@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Bill {
+  id                    Int    @unique @id @default(autoincrement())
+  clientNumber          String // Número do cliente
+  date                  String // Data da conta
+  dueDate               String // Data de vencimento
+  eletricityConsumption Float // Energia elétrica (quantidade)
+  eletricityCost        Float // Energia elétrica (custo)
+  sceeeeConsumption     Float // Energia SCEEEE (quantidade)
+  sceeeeCost            Float // Energia SCEEEE (custo)
+  gdiEnergyConsumption  Float // Energia Compensanda GDI (quantidade)
+  gdiEnergyCost         Float // Energia Compensanda GDI (custo)
+  publicContribution    Float // Contrib Ilum Publica Municipal
+  fileUrl               String // Arquivo
+  fileKey               String // Arquivo
+}
