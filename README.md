@@ -25,6 +25,11 @@ A API está integrada ao Supabase Storage para salvar PDFs de faturas de maneira
    - Rota: `/bill`
    - Permite adicionar uma nova fatura ao servidor, juntamente com o PDF correspondente.
 
+4. **Excluir todas faturas:**
+   - Método: DELETE
+   - Rota: `/bill/all`
+   - Permite adicionar uma nova fatura ao servidor, juntamente com o PDF correspondente.
+
 ### Configuração Inicial
 
 Antes de iniciar o desenvolvimento, siga esses passos:
@@ -45,7 +50,7 @@ Para iniciar o projeto no frontend, siga as instruções abaixo:
   pnpm start:dev 
   ```
 
-### Dados adicionais
+### Informações adicionais
 
 Caso queira executar os testes:
    ```bash

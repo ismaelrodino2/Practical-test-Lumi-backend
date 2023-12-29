@@ -21,4 +21,7 @@ export class BillService {
   async findGroup(clientNumber: string) {
     return this.billUsecase.findGroup(clientNumber);
   }
+  async deleteAll() {
+    return this.billUsecase.deleteAll();
+  }
 }

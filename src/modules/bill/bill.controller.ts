@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Post,
   Query,
@@ -29,5 +30,10 @@ export class BillController {
   @Get('group')
   async find(@Query() query: Record<string, string>) {
     return this.billService.findGroup(query['clientNumber']);
+  }
+
+  @Delete('all')
+  async deleteAll() {
+    return this.billService.deleteAll();
   }
 }

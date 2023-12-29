@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Bill } from '@prisma/client';
+import { Bill, Prisma } from '@prisma/client';
 import { PrismaService } from '../../database/prisma.service';
 import { SupabaseRepository } from '../../database/supabase/supabase.repository';
 import { PdfParser } from './pdf-parser.service';
@@ -8,6 +8,7 @@ export abstract class BillRepository {
   abstract create(file: Express.Multer.File): Promise<Bill>;
   abstract findAll(): Promise<Bill[]>;
   abstract findGroup(clientNumber: string): Promise<Bill[]>;
+  abstract deleteAll(): Promise<Prisma.BatchPayload>;
 }
 
 @Injectable()
@@ -43,6 +44,14 @@ export class BillUsecase extends BillRepository {
       return this.prisma.bill.findMany();
     } catch (error) {
       console.error('Error finding bills:', error);
+    }
+  }
+
+  async deleteAll() {
+    try {
+      return this.prisma.bill.deleteMany();
+    } catch (error) {
+      console.error('Error deleting bills:', error);
     }
   }
 

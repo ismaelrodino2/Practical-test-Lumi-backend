@@ -6,7 +6,7 @@ import { SupabaseRepository } from '../../database/supabase/supabase.repository'
 import { BillUsecase } from './bill.repository';
 import { BillService } from './bill.service';
 import { PdfParser } from './pdf-parser.service';
-import {beforeEach, describe, expect, it, vi} from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockBill: Bill = {
   id: 0,
@@ -64,9 +64,7 @@ describe('Bills Controller test', () => {
         buffer: Buffer.from('whatever'),
       };
 
-      vi
-        .spyOn(billUsecase, 'create')
-        .mockImplementation(async () => mockBill);
+      vi.spyOn(billUsecase, 'create').mockImplementation(async () => mockBill);
       // prepare
       const result = await billService.create(mockFile as Express.Multer.File);
 
@@ -88,14 +86,25 @@ describe('Bills Controller test', () => {
     });
   });
 
+  it('deleteAll', async () => {
+    // arrange
+    vi.spyOn(billUsecase, 'deleteAll').mockImplementation(async () => {
+      return { count: 0 };
+    });
+    // prepare
+    const request = await billService.deleteAll();
+
+    // assert
+    expect(billUsecase.deleteAll).toHaveBeenCalled();
+    expect(request).toEqual({ count: 0 });
+  });
+
   describe('findGroup', () => {
     it('should return an empty array', async () => {
       const result: Bill[] = [mockBill];
 
       // arrange
-      vi
-        .spyOn(billUsecase, 'findGroup')
-        .mockImplementation(async () => result);
+      vi.spyOn(billUsecase, 'findGroup').mockImplementation(async () => result);
 
       // prepare
       const request = await billService.findGroup('');
