@@ -1,7 +1,6 @@
 import { Bill } from '@prisma/client';
 import { PdfParser } from './pdf-parser.service';
-import {beforeEach, describe, expect, it, vi} from 'vitest'
-
+import { beforeEach, describe, expect, it } from 'vitest';
 
 const mockBill: Bill = {
   id: 1,
@@ -25,7 +24,7 @@ describe('Pdf parser test', () => {
 
   beforeEach(async () => {
     pdfParser = new PdfParser();
-    localFilePath = 'src/modules/bill/test-file.pdf';
+    localFilePath = 'src/assets/test-file.pdf';
   });
 
   describe('Read local file', () => {
