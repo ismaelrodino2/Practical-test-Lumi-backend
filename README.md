@@ -44,10 +44,10 @@ Para iniciar o projeto no frontend, siga as instruções abaixo:
   ```#!/bin/sh
   pnpm start:dev 
   ```
-  
+
 ### Dados adicionais
 
-Caso queira executar od testes:
+Caso queira executar os testes:
    ```bash
   pnpm test
   ```
