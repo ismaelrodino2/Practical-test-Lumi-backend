@@ -35,15 +35,16 @@ Abra o arquivo `.env`, crie uma conta no supabase, crie um projeto e preencha os
 
 Para iniciar o projeto no frontend, siga as instruções abaixo:
 
+
 1. Instale as dependências:
-   ```bash
+  ```#!/bin/sh
   pnpm i
   ```
-
-2. Inicie o projeto no modo desenvolvimento:
-   ```bash
+2. Inicie o projeto:
+  ```#!/bin/sh
   pnpm start:dev 
   ```
+  
 ### Dados adicionais
 
 Caso queira executar od testes:
