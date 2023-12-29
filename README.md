@@ -1,29 +1,35 @@
-# Projeto Lumia - Teste para Desenvolvedor Pleno Fullstack
+# API do Projeto Lumia - Desenvolvedor Pleno Fullstack
 
-Bem-vindo ao teste para a posição de Desenvolvedor Pleno Fullstack na Lumia! Este projeto consiste em criar um sistema web com duas telas principais: o Dashboard e a Tela de Faturas. Abaixo, você encontrará uma descrição detalhada das funcionalidades e instruções para iniciar o projeto.
+Bem-vindo à API do Projeto Lumia, onde gerenciamos o armazenamento de PDFs de faturas no Supabase Storage e os dados associados no Supabase, utilizando um ORM baseado em PostgreSQL. Abaixo, você encontrará informações essenciais sobre as funcionalidades da API e as instruções para iniciar o desenvolvimento.
 
 ## Funcionalidades
 
-### Dashboard
+### Armazenamento de Faturas
 
-No Dashboard, você terá acesso a dois gráficos essenciais:
+A API está integrada ao Supabase Storage para salvar PDFs de faturas de maneira eficiente. Cada fatura é associada aos dados correspondentes no PostgreSQL.
 
-- **Gráfico de Custos:** Exibe visualmente os custos relacionados à energia.
-- **Gráfico de Energia Gasta:** Mostra o consumo de energia ao longo do tempo.
+### Rotas Disponíveis
 
-Além disso, você pode filtrar os gráficos inserindo o número do cliente da fatura e pressionando o ícone "Enviar". Para adicionar uma nova fatura ao servidor, utilize o botão de adição e envie os dados com o botão correspondente. O botão de reset permite limpar o campo de entrada do número do cliente.
+1. **Obter uma Fatura:**
+   - Método: GET
+   - Rota: `/bill/group?clientNumber=[clientNumber]`
+   - Retorna os detalhes de todas faturas específicas com o ID fornecido.
 
-### Tela de Faturas
+2. **Obter Várias Faturas:**
+   - Método: GET
+   - Rota: `/bill/all`
+   - Retorna uma lista de todas as faturas armazenadas.
 
-Na Tela de Faturas, você pode realizar as seguintes ações:
+3. **Enviar uma Nova Fatura:**
+   - Método: POST
+   - Rota: `/bill`
+   - Permite adicionar uma nova fatura ao servidor, juntamente com o PDF correspondente.
 
-- **Consulta de Fatura:** Insira o número do cliente, pressione "Enviar" e selecione o mês desejado para visualizar e baixar a fatura correspondente.
-
-## Configuração Inicial
+### Configuração Inicial
 
 Antes de iniciar o desenvolvimento, siga esses passos:
 
-1. Abra o arquivo `.env` e defina a variável `NEXT_PUBLIC_API_BASE_URL` com a URL da API que será utilizada. O endpoint da API pode ser encontrado no repositório [https://github.com/ismaelrodino2/Practical-test-Lumi-backend].
+Abra o arquivo `.env`, crie uma conta no supabase, crie um projeto e preencha os dados de .env como no .env.example
 
 ## Iniciando o Projeto
 
@@ -33,7 +39,14 @@ Para iniciar o projeto no frontend, siga as instruções abaixo:
    ```bash
   pnpm i
   ```
-2. Inicie o projeto:
+
+2. Inicie o projeto no modo desenvolvimento:
    ```bash
-  pnpm dev
+  pnpm start:dev 
+  ```
+### Dados adicionais
+
+Caso queira executar od testes:
+   ```bash
+  pnpm test
   ```
